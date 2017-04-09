@@ -1,0 +1,36 @@
+{
+  "name": "rhl-tsx-boilerplate",
+  "version": "0.0.1",
+  "description": "react-hot-loader typescript boilerplate",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "react-hot-loader",
+    "3",
+    "typescript",
+    "boilerplate"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/react": "^15.0.21",
+    "@types/react-dom": "^0.14.23",
+    "awesome-typescript-loader": "3.1.2",
+    "babel-core": "^6.24.0",
+    "babel-loader": "6.4.1",
+    "babel-preset-es2015": "^6.24.0",
+    "babel-preset-react": "^6.23.0",
+    "babel-preset-stage-0": "^6.22.0",
+    "react-hot-loader": "next",
+    "typescript": "2.2.2",
+    "webpack": "^2.3.2",
+    "webpack-dev-server": "^2.4.2"
+  },
+  "dependencies": {
+    "babel-polyfill": "^6.23.0",
+    "react": "^15.4.2",
+    "react-dom": "15.4.2"
+  }
+}
