@@ -2,13 +2,12 @@
   "name": "rhl-tsx-boilerplate",
   "version": "0.0.1",
   "description": "react-hot-loader typescript boilerplate",
-  "main": "index.js",
   "scripts": {
+    "start": "webpack-dev-server",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
-    "react-hot-loader",
-    "3",
+    "react-hot-loader@v3",
     "typescript",
     "boilerplate"
   ],
