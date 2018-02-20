@@ -10,7 +10,7 @@ interface Props {
 
 const onClick = e => console.log('CLICK!!', e.target);
 
-const Button = ({ className }: Props) => (
+const Button: React.SFC<Props> = ({ className }) => (
   <button className={className} onClick={onClick}>Click Me!</button>
 );
 

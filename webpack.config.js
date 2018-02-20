@@ -16,7 +16,7 @@ module.exports = () => ({
     'basement-lab': [
       'babel-polyfill',
       // './src/index.tsx',
-      SRC_DIR
+      SRC_DIR,
     ],
   },
   resolve: {
@@ -38,10 +38,10 @@ module.exports = () => ({
   module: {
     rules: [
       {
-        enforce: "pre",
+        enforce: 'pre',
         test: /\.js$/,
         use: [
-          { loader: "source-map-loader" },
+          { loader: 'source-map-loader' },
         ],
       },
       {
@@ -88,6 +88,7 @@ module.exports = () => ({
       template: path.resolve(__dirname, 'public/index.html'),
     }),
 
+    new StyleLintPlugin({ syntax: 'scss' }),
 
     new TsConfigPathsPlugin(),
 
