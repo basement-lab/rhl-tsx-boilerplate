@@ -36,9 +36,6 @@ a {
   -moz-transition: 250ms ease;
   -ms-transition: 250ms ease;
 	transition: 250ms ease;
-  /* -o-transition: ease-in-out .15s;
-	-webkit-transition: ease-in-out .15s;
-  transition: ease-in-out .15s; */
 }
 
 a,

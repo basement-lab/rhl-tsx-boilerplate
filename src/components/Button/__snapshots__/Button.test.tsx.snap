@@ -1,7 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`[Button] renders 1`] = `
+.c0 {
+  color: #f00;
+  border: 1px solid #ff0000;
+  height: 100px;
+  width: 200px;
+}
+
 <button
+  className="c0"
   onClick={[Function]}
 >
   Click Me!

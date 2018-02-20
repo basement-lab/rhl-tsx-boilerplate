@@ -1,18 +1,24 @@
 {
+    "compileOnSave": true,
     "compilerOptions": {
         "allowJs": false,
         "allowSyntheticDefaultImports": true,
-        "jsx": "preserve",
+        "esModuleInterop": true,
+        "jsx": "react",
         "lib": [
             "es6",
             "dom",
         ],
-        "module": "es6",
+        "module": "commonjs",
         "moduleResolution": "node",
         "sourceMap": true,
         "target": "es6",
     },
+    "include": [
+        "src/**/*",
+    ],
     "exclude": [
         "node_modules",
+        "**/__snapshots__/*",
     ],
 }

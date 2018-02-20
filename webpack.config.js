@@ -4,19 +4,25 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const StyleLintPlugin = require('stylelint-webpack-plugin');
+const { CheckerPlugin, TsConfigPathsPlugin } = require('awesome-typescript-loader');
 const path = require('path');
 const webpack = require('webpack');
 
+const SRC_DIR = path.resolve(__dirname, 'src');
 
-module.exports = {
+module.exports = () => ({
   devtool: 'inline-source-map',
   entry: {
     'basement-lab': [
       'babel-polyfill',
-      './src/index.tsx',
+      // './src/index.tsx',
+      SRC_DIR
     ],
   },
   resolve: {
+    alias: {
+      components: path.resolve(SRC_DIR, 'components'),
+    },
     extensions: [
       '.ts',
       '.tsx',
@@ -31,6 +37,13 @@ module.exports = {
   },
   module: {
     rules: [
+      {
+        enforce: "pre",
+        test: /\.js$/,
+        use: [
+          { loader: "source-map-loader" },
+        ],
+      },
       {
         test: /\.(ts|tsx)$/,
         use: [
@@ -57,11 +70,14 @@ module.exports = {
     ],
   },
   plugins: [
+    new CheckerPlugin(),
+
     new ExtractTextPlugin({
       filename: '[name].bundle.css',
       allChunks: true,
+      // disable: !env.prod, // SEE: https://github.com/gaearon/react-hot-loader/tree/next#webpack-extracttextplugin--commonmoduleplugin
     }),
-    
+
     new FriendlyErrorsWebpackPlugin({
       clearConsole: true,
     }),
@@ -71,6 +87,9 @@ module.exports = {
       inject: true,
       template: path.resolve(__dirname, 'public/index.html'),
     }),
+
+
+    new TsConfigPathsPlugin(),
 
     new webpack.EnvironmentPlugin({
       NODE_ENV: 'development',
@@ -106,4 +125,4 @@ module.exports = {
       source: true,
     },
   },
-};
+});

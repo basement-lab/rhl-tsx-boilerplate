@@ -1,4 +1,6 @@
 {
+  "sourceType": "module",
+  //---------------------------------------------------------------- DEVELOPMENT
   "env": {
     "development": {
       "presets": [
@@ -12,12 +14,13 @@
         "react"
       ],
     }, // END: development
+    //--------------------------------------------------------------------- TEST
     "test": {
       "presets": [
         [
           "env",
           {
-            "debug": true,
+            // "debug": true,
             "modules": "commonjs",
             "targets": {
               "node": "current",

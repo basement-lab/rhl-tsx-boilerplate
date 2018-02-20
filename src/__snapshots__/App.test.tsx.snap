@@ -2,7 +2,8 @@
 
 exports[`[App] mounts 1`] = `
 .c0 {
-  color: red;
+  color: #f00;
+  border: 1px solid #ff0000;
   height: 100px;
   width: 200px;
 }
@@ -17,6 +18,7 @@ exports[`[App] mounts 1`] = `
         className="c0"
       >
         <button
+          className="c0"
           onClick={[Function]}
         >
           Click Me!

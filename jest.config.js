@@ -23,6 +23,10 @@ module.exports = {
     'tsx',
     'ts',
   ],
+  moduleNameMapper: {
+    '^components(.*)$': '<rootDir>/src/components/$1',
+    '\\.(css|scss)$': '<rootDir>/test/stubs/styles.js',
+  },
   roots: [
     '<rootDir>/src/',
   ],
@@ -39,6 +43,7 @@ module.exports = {
   ],
   transform: {
     '^.+\\.tsx?$': 'ts-jest',
+    '^.+\\.js?$': '<rootDir>/node_modules/babel-jest',
   },
   verbose: true,
 };
