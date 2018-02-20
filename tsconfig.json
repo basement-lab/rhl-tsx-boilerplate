@@ -1,15 +1,18 @@
 {
     "compilerOptions": {
         "allowJs": false,
+        "allowSyntheticDefaultImports": true,
+        "jsx": "preserve",
+        "lib": [
+            "es6",
+            "dom",
+        ],
         "module": "es6",
-        "target": "es6",
-        "lib": ["es6", "dom"],
         "moduleResolution": "node",
         "sourceMap": true,
-        "jsx": "preserve",
-        "allowSyntheticDefaultImports": true
+        "target": "es6",
     },
     "exclude": [
-        "node_modules"
-    ]
+        "node_modules",
+    ],
 }

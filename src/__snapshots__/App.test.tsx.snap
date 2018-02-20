@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`[App] mounts 1`] = `
+.c0 {
+  color: red;
+  height: 100px;
+  width: 200px;
+}
+
+<App>
+  <div>
+    <h1>
+      React Hot Loader v3 + Typescript
+    </h1>
+    <Styled(Button)>
+      <Button
+        className="c0"
+      >
+        <button
+          onClick={[Function]}
+        >
+          Click Me!
+        </button>
+      </Button>
+    </Styled(Button)>
+    <div>
+      Test hot loading here
+    </div>
+  </div>
+</App>
+`;

@@ -1,12 +1,24 @@
-import * as React from "react";
 
-export default class App extends React.Component<any,any> {
-    render() {
-        return (<div>
-            <h1>React Hot Loader v3 + Typescript</h1>
-            <div>
-                Test hot loading here
-            </div>
-        </div>);
-    }
+import * as React from 'react';
+import { hot } from 'react-hot-loader';
+
+import Button from './components/Button';
+
+class App extends React.Component<any, any> {
+  componentDidMount() {
+    console.log('App.componentDidMount()');
+  }
+  render() {
+    return (<div>
+      <h1>React Hot Loader v3 + Typescript</h1>
+      <Button />
+      <div>
+        Test hot loading here
+      </div>
+    </div>);
+  }
 }
+
+/** ************************************************************************* */
+
+export default hot(module)(App);

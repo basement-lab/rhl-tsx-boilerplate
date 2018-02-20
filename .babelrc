@@ -1,4 +1,32 @@
 {
-  "presets": [["es2015", { "modules": false }], "stage-0", "react"],
-  "plugins": ["react-hot-loader/babel"]
+  "env": {
+    "development": {
+      "presets": [
+        [
+          "env",
+          {
+            "modules": false
+          }
+        ],
+        "stage-2",
+        "react"
+      ],
+    }, // END: development
+    "test": {
+      "presets": [
+        [
+          "env",
+          {
+            "debug": true,
+            "modules": "commonjs",
+            "targets": {
+              "node": "current",
+            },
+          }
+        ],
+        "react",
+        "jest",
+      ],
+    }, // END: testing
+  }
 }

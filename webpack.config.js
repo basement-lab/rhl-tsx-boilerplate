@@ -1,35 +1,91 @@
-var path = require('path');
-var webpack = require('webpack');
+
+
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const StyleLintPlugin = require('stylelint-webpack-plugin');
+const path = require('path');
+const webpack = require('webpack');
+
 
 module.exports = {
-  entry: [
+  devtool: 'inline-source-map',
+  entry: {
+    'basement-lab': [
       'babel-polyfill',
-      'react-hot-loader/patch',
       './src/index.tsx',
-  ],
+    ],
+  },
   resolve: {
-    extensions: ['.ts', '.tsx', '.js', '.json']
+    extensions: [
+      '.ts',
+      '.tsx',
+      '.js',
+      '.json',
+    ],
   },
   output: {
-    filename: 'bundle.js',
+    filename: '[name].bundle.js',
     path: path.resolve(__dirname, 'dist'),
-    publicPath: '/static/'
+    publicPath: '/',
   },
-  devtool: 'inline-source-map',
   module: {
     rules: [
       {
-        test: /\.tsx?$/,
+        test: /\.(ts|tsx)$/,
         use: [
-          'react-hot-loader/webpack', 'babel-loader', 'awesome-typescript-loader'
+          { loader: 'babel-loader' },
+          { loader: 'awesome-typescript-loader' },
+        ],
+        exclude: /node_modules/,
+      },
+      {
+        test: /\.(js|jsx)$/,
+        use: [
+          {
+            loader: 'babel-loader',
+            options: {
+              babelrc: true,
+              // cacheDirectory: true,
+            },
+          },
+          { loader: 'stylelint-custom-processor-loader' },
+          { loader: 'eslint-loader' },
         ],
         exclude: /node_modules/,
       },
     ],
   },
   plugins: [
+    new ExtractTextPlugin({
+      filename: '[name].bundle.css',
+      allChunks: true,
+    }),
+    
+    new FriendlyErrorsWebpackPlugin({
+      clearConsole: true,
+    }),
+
+
+    new HtmlWebpackPlugin({
+      inject: true,
+      template: path.resolve(__dirname, 'public/index.html'),
+    }),
+
+    new webpack.EnvironmentPlugin({
+      NODE_ENV: 'development',
+      API_HOST: 'localhost:4000',
+      HOST: '0.0.0.0',
+    }),
+
     new webpack.HotModuleReplacementPlugin(),
+
+    new webpack.LoaderOptionsPlugin({
+      debug: true,
+    }),
+
     new webpack.NamedModulesPlugin(),
+
     new webpack.NoEmitOnErrorsPlugin(),
   ],
   devServer: {
@@ -37,5 +93,17 @@ module.exports = {
     port: 3000,
     historyApiFallback: true,
     hot: true,
+
+    stats: {
+      assets: false,
+      children: false,
+      chunks: false,
+      env: true,
+      modules: false,
+      moduleTrace: false,
+      performance: true,
+      publicPath: false,
+      source: true,
+    },
   },
 };
